@@ -42,7 +42,7 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-a
 let DATA;
 const dataReady = fetch('./data.json').then(r=>{if(!r.ok) throw new Error('No se pudo cargar data.json'); return r.json();}).then(data=>{DATA=data; renderApp();}).catch(err=>{document.body.insertAdjacentHTML('afterbegin','<div style="padding:16px;background:#7f1d1d;color:white">No se pudieron cargar las estadísticas. Comprueba que data.json está en la raíz del repositorio.</div>'); console.error(err);});
 function renderApp(){
-id=>document.getElementById(id);
+const $ = id => document.getElementById(id);
 const fmt=n=>Number(n||0).toLocaleString('es-ES',{maximumFractionDigits:1});
 const playedMatches=DATA.matches.filter(m=>m.homeScore>0||m.awayScore>0);
 const totalPoints=DATA.players.reduce((s,p)=>s+p.points,0);
